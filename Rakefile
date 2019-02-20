@@ -51,7 +51,7 @@ namespace :inspec do
   desc "Run Inspec tests"
   task :default do
     Rake::Task["inspec:common"].invoke
-    # Rake::Task["inspec:prometheus"].invoke
+    Rake::Task["inspec:prometheus"].invoke
     # Rake::Task["inspec:grafana"].invoke
   end
 
@@ -62,7 +62,7 @@ namespace :inspec do
 
   desc "Test prometheus"
   task :prometheus do
-    sh 'inspec exec spec/prometheus_spec.rb -t docker://prometheus'
+    sh 'inspec exec spec/prometheus_spec.rb -t docker://prometheus-test_prometheus_1'
   end
 
   desc "Test grafana"

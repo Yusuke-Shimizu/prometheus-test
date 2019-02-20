@@ -14,7 +14,7 @@ end
 # check prometheus site
 describe file('/etc/prometheus/prometheus.yml') do
 	it { should exist }
-	its('content') { should match(/node_exporter/) }
+	# its('content') { should match(/node_exporter/) }
 end
 
 # check grafana site
@@ -25,13 +25,13 @@ end
 # end
 
 # connect node
-describe command("wget http://node_exporter:9100/metrics -q") do
-	include_context 'check_command'
-end
-describe file('/etc/prometheus/metrics') do
-	it { should exist }
-	its('content') { should match(/node_boot_time_seconds/) }
-end
-describe command("rm -f metrics") do
-	include_context 'check_command'
-end
+# describe command("wget http://node_exporter:9100/metrics -q") do
+# 	include_context 'check_command'
+# end
+# describe file('/etc/prometheus/metrics') do
+# 	it { should exist }
+# 	its('content') { should match(/node_boot_time_seconds/) }
+# end
+# describe command("rm -f metrics") do
+# 	include_context 'check_command'
+# end
