@@ -20,7 +20,7 @@ end
 describe http('http://localhost:9090/targets') do
 	its('status') { should cmp 200 }
 	its('body') { should include 'http://localhost:9090/metrics' }
-	# its('body') { should include 'http://node_exporter:9100/metrics' }
+	its('body') { should include 'http://node_exporter:9100/metrics' }
 end
 
 # check grafana site
@@ -28,8 +28,8 @@ end
 # 	its('status') { should cmp 200 }
 # end
 
-# # check node exporter
-# describe http('http://localhost:9100/metrics') do
-# 	its('status') { should cmp 200 }
-# 	its('body') { should match(/node_boot_time_seconds/) }
-# end
+# check node exporter
+describe http('http://localhost:9100/metrics') do
+	its('status') { should cmp 200 }
+	its('body') { should match(/node_boot_time_seconds/) }
+end

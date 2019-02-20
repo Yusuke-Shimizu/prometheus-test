@@ -6,3 +6,8 @@ services:
      - "9090:9090"
 #    volumes:
 #     - $PWD/prometheus-data:/etc/prometheus/data
+  node_exporter:
+    image: prom/node-exporter
+    container_name: node_exporter
+    ports:
+      - 9100:9100
