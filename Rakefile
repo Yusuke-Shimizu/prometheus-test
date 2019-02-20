@@ -49,7 +49,7 @@ namespace :inspec do
   task :default do
     Rake::Task["inspec:common"].invoke
     Rake::Task["inspec:prometheus"].invoke
-    # Rake::Task["inspec:grafana"].invoke
+    Rake::Task["inspec:grafana"].invoke
   end
 
   desc "Blackbox test from host"
@@ -77,19 +77,19 @@ namespace :ci do
   desc "build, test and scrap"
   task :default do
     Rake::Task["ci:running"].invoke
-    Rake::Task["prometheus:stop"].invoke
+    Rake::Task["docker:stop"].invoke
   end
 
   desc "build and test and not stop"
   task :running do
-    Rake::Task["prometheus:run"].invoke
+    Rake::Task["docker:run"].invoke
     sleep 3
     Rake::Task["inspec:default"].invoke
   end
 
   desc "restart nad test"
   task :restart do
-    Rake::Task["prometheus:stop"].invoke
+    Rake::Task["docker:stop"].invoke
     Rake::Task["ci:running"].invoke
   end
 end

@@ -24,9 +24,9 @@ describe http('http://localhost:9090/targets') do
 end
 
 # check grafana site
-# describe http('http://localhost:3000/login') do
-# 	its('status') { should cmp 200 }
-# end
+describe http('http://localhost:3000/login') do
+	its('status') { should cmp 200 }
+end
 
 # check node exporter
 describe http('http://localhost:9100/metrics') do
