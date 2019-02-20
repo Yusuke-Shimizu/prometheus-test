@@ -4,5 +4,5 @@ services:
     build: .
     ports:
      - "9090:9090"
-    volumes:
-     - $PWD/prometheus-data:/etc/prometheus/data
+#    volumes:
+#     - $PWD/prometheus-data:/etc/prometheus/data
