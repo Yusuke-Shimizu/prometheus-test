@@ -1,18 +1,6 @@
 require 'rake'
 
 namespace :prometheus do
-  desc "run prometheus"
-  task :run do
-    sh 'docker-compose up -d'
-    Rake::Task["docker:list"].invoke
-  end
-
-  desc "stop prometheus"
-  task :stop do
-    sh 'docker-compose down'
-    Rake::Task["docker:list"].invoke
-  end
-
   desc "login prometheus container"
   task :login do
     sh 'docker exec -it prometheus sh'
@@ -28,14 +16,11 @@ end
 namespace :docker do
   desc "build containers"
   task :build do
-    sh 'docker build ./ -t my-prometheus'
-    # sh 'docker build ./ -t my-prometheus --no-cache'
+    sh 'docker-compose build'
   end
 
   desc "list containers"
   task :list do
-    # sh 'docker container ls'
-    # sh 'docker container ls -a'
     sh 'docker-compose ps'
   end
 
@@ -43,6 +28,18 @@ namespace :docker do
   task :remove do
     Rake::Task["docker:list"].invoke
     sh 'docker container prune -f'
+    Rake::Task["docker:list"].invoke
+  end
+
+  desc "run containers"
+  task :run do
+    sh 'docker-compose up -d'
+    Rake::Task["docker:list"].invoke
+  end
+
+  desc "stop containers"
+  task :stop do
+    sh 'docker-compose down'
     Rake::Task["docker:list"].invoke
   end
 end
