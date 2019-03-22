@@ -59,7 +59,7 @@ namespace :inspec do
 
   desc "Test prometheus"
   task :prometheus do
-    sh 'inspec exec spec/prometheus_spec.rb -t docker://prometheus-test_prometheus_1'
+    sh 'inspec exec spec/prometheus_spec.rb -t docker://prometheus'
   end
 
   desc "Test grafana"

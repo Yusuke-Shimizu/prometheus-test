@@ -2,6 +2,7 @@ version: '2'
 services:
   prometheus:
     build: .
+    container_name: prometheus
     ports:
      - "9090:9090"
 #    volumes:
