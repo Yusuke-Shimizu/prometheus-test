@@ -12,19 +12,19 @@ RSpec.shared_context 'check_command' do
 end
 
 # check prometheus site
-describe http('http://localhost:9090/metrics') do
+describe http('http://localhost:8080/prometheus/metrics') do
 	its('status') { should cmp 200 }
 	its('body') { should include 'go_gc_duration_seconds' }
 	# its('body') { should include 'prometheus_http_response_size_bytes' }
 end
-describe http('http://localhost:9090/targets') do
+describe http('http://localhost:8080/prometheus/targets') do
 	its('status') { should cmp 200 }
 	its('body') { should include 'http://localhost:9090/metrics' }
 	its('body') { should include 'http://node_exporter:9100/metrics' }
 end
 
 # check grafana site
-describe http('http://localhost:3000/login') do
+describe http('http://localhost:8080/grafana/login') do
 	its('status') { should cmp 200 }
 end
 

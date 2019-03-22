@@ -102,7 +102,7 @@ services:
       # - 3000:3000   # grafana
       # - 18080:18080 # adminer
     links:
-      # - grafana
+      - grafana
       - prometheus
     networks:
       - back-tier

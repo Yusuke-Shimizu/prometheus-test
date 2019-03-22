@@ -50,6 +50,7 @@ namespace :inspec do
     Rake::Task["inspec:common"].invoke
     Rake::Task["inspec:prometheus"].invoke
     Rake::Task["inspec:grafana"].invoke
+    Rake::Task["inspec:nginx"].invoke
   end
 
   desc "Blackbox test from host"
@@ -65,6 +66,11 @@ namespace :inspec do
   desc "Test grafana"
   task :grafana do
     sh 'inspec exec spec/grafana_spec.rb -t docker://grafana'
+  end
+
+  desc "Test nginx"
+  task :nginx do
+    sh 'inspec exec spec/nginx_spec.rb -t docker://nginx'
   end
 
   desc "Tests host"
