@@ -50,7 +50,7 @@ namespace :inspec do
     Rake::Task["inspec:common"].invoke
     Rake::Task["inspec:prometheus"].invoke
     Rake::Task["inspec:grafana"].invoke
-    Rake::Task["inspec:nginx"].invoke
+    # Rake::Task["inspec:nginx"].invoke
   end
 
   desc "Blackbox test from host"

@@ -4,7 +4,8 @@ services:
     build: .
     container_name: prometheus
     ports:
-     - "9090:9090"
+     # - "9090:9090"
+     - "8080:9090"
 #    volumes:
 #     - $PWD/prometheus-data:/etc/prometheus/data
   node_exporter:
@@ -18,18 +19,19 @@ services:
     # volumes:
     #   - ./grafana-data:/var/lib/grafana
     ports:
-      - 3000:3000
+      # - 3000:3000
+      - 8081:3000
 
-  nginx:
-    container_name: nginx
-    image: nginx:1.13.6-alpine
-    volumes:
-      - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx/conf/conf.d:/etc/nginx/conf.d
-      - ./nginx/_log:/var/log/nginx
-    ports:
-      #- 80:80
-      - 8080:8080
-    links:
-      - grafana
-      - prometheus
+  # nginx:
+  #   container_name: nginx
+  #   image: nginx:1.13.6-alpine
+  #   volumes:
+  #     - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+  #     - ./nginx/conf/conf.d:/etc/nginx/conf.d
+  #     - ./nginx/_log:/var/log/nginx
+  #   ports:
+  #     #- 80:80
+  #     - 8080:8080
+  #   links:
+  #     - grafana
+  #     - prometheus

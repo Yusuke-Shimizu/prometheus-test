@@ -35,3 +35,14 @@ end
 #describe file('/metrics') do
 #	it { should_not exist }
 #end
+
+# check grafana site
+describe command("wget http://grafana:3000/login -q") do
+	include_context 'check_command'
+end
+describe file('/login') do
+	it { should exist }
+end
+describe command("rm -f login") do
+	include_context 'check_command'
+end
